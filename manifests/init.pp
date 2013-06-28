@@ -33,9 +33,11 @@
 #
 # === Copyright
 #
-# Copyright 2013 Your name here, unless otherwise noted.
+# Copyright 2013 
 #
-class common {
+class common (
+  $proxyserver = $::common::params::proxyserver
+  ){
 
 
 }
