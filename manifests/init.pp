@@ -38,6 +38,5 @@
 class common (
   $proxyserver = $::common::params::proxyserver
   ){
-
-
+  class { 'common::files': }
 }
