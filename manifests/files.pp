@@ -1,6 +1,6 @@
 # Common Files
 class common::files {
-  files { '/etc/issue':
+  file { '/etc/issue':
     ensure  => 'present',
     mode    => '0644',
     owner   => 'root',
@@ -9,7 +9,7 @@ class common::files {
     content => template('common/etc/issue.erb');
   }
     
-  files { '/etc/motd':
+  file { '/etc/motd':
     ensure  => 'present',
     mode    => '0644',
     owner   => 'root',

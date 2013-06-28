@@ -37,6 +37,6 @@
 #
 class common (
   $proxyserver = $::common::params::proxyserver
-  ){
+  ) inherits common::params {
   class { 'common::files': }
 }
