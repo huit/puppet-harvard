@@ -36,7 +36,9 @@
 # Copyright 2013 
 #
 class common (
-  $proxyserver = $::common::params::proxyserver
+  $shell_tmout = '10800',
+  $proxyserver = $::common::params::proxyserver,
+  $proxy_port  = $::common::params::proxy_port
   ) inherits common::params {
   class { 'common::files': }
 }

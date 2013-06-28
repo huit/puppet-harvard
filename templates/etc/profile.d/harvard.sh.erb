@@ -1,0 +1,25 @@
+#### THIS FILE MANAGED BY PUPPET ####
+
+alias view="/usr/bin/vim -R"
+alias facter="facter -p"
+
+# 3hr idle timeout
+export TMOUT=<%= @shell_tmout %>
+
+# Key Bindings
+bind '"\e[A"':history-search-backward
+bind '"\e[B"':history-search-forward
+
+<% if @proxyserver and @proxy_port -%>
+# proxy settings
+export http_proxy=http://<%= @proxyserver -%>:<%= @proxy_port %>
+export https_proxy=$http_proxy
+export ftp_proxy=$http_proxy
+export rsync_proxy=$http_proxy
+export no_proxy="localhost,127.0.0.1,localaddress,.<%= @domain -%>"
+<% end -%>
+
+# mco command options
+export MCOLLECTIVE_EXTRA_OPTS="--dt 5 --timeout 10"
+
+#### THIS FILE MANAGED BY PUPPET ####
