@@ -3,8 +3,10 @@
 alias view="/usr/bin/vim -R"
 alias facter="facter -p"
 
+<% if @shell_tmout -%>
 # 3hr idle timeout
 export TMOUT=<%= @shell_tmout %>
+<% end -%>
 
 # Key Bindings
 bind '"\e[A"':history-search-backward
