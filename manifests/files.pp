@@ -6,7 +6,7 @@ class common::files {
     owner   => 'root',
     group   => 'root',
     backup  => true,
-    content => template('common/etc/issue.erb');
+    content => template('common/etc/issue.erb'),
   }
     
   file { '/etc/motd':
@@ -15,6 +15,10 @@ class common::files {
     owner   => 'root',
     group   => 'root',
     backup  => true,
-    content => template('common/etc/motd.erb');
+    content => template('common/etc/motd.erb'),
+  }
+  file { '/var/.nsr':
+    content => "+skip:log\n",
+    mode    => '0400',
   }
 }
