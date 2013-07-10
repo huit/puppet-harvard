@@ -40,5 +40,6 @@ class common (
   $proxyserver = $::common::params::proxyserver,
   $proxy_port  = $::common::params::proxy_port
   ) inherits common::params {
+  class { 'common::packages': }
   class { 'common::files': }
 }
