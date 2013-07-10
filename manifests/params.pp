@@ -7,7 +7,7 @@ class common::params {
     'Amazon': {
       $emacs = 'xemacs-nox'
     }
-    'RedHat': {
+    'RedHat','CentOS': {
       $emacs = 'emacs-nox'
     }
     default: {
