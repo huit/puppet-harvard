@@ -6,8 +6,8 @@ describe 'common', :type => :class do
     let(:params) { { } }
     
       it {
-        should contain_package('git')
-        should contain_package('vim-enhanced')
+        should include_class('common::files')
+        should include_class('common::packages')
       }
   end
 end
