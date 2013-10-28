@@ -33,7 +33,7 @@
 #
 # === Copyright
 #
-# Copyright 2013 
+# Copyright 2013
 #
 class common (
   $shell_tmout = '10800',

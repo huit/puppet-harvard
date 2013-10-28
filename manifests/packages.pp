@@ -1,4 +1,4 @@
-class common::packages ( 
+class common::packages (
   $emacs = $::common::params::emacs
   ){
   package { 'git'         : ensure => present, }

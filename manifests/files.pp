@@ -8,7 +8,7 @@ class common::files {
     backup  => true,
     content => template('common/etc/issue.erb'),
   }
-    
+
   file { '/etc/motd':
     ensure  => 'present',
     mode    => '0644',
