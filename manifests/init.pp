@@ -34,7 +34,6 @@
 # === Copyright
 #
 # Copyright 2013
-#
 class common (
   $shell_tmout = '10800',
   $proxyserver = $::common::params::proxyserver,
