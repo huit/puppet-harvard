@@ -34,4 +34,13 @@ describe 'common', :type => :class do
       should include_class('common::packages')
     }
   end
+  context "HUIT Common class with no parameters, basic test - Unsupported" do
+    let(:params) { { } }
+    it do 
+      expect {
+      should include_class('common::files')
+      should include_class('common::packages')
+    }.to raise_error(Puppet::Error, /is not supported/)
+    end
+  end
 end
