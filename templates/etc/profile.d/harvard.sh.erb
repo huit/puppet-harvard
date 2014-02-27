@@ -4,7 +4,7 @@ alias view="/usr/bin/vim -R"
 alias facter="facter -p"
 
 <% if @shell_tmout -%>
-# 3hr idle timeout
+# <%= @shell_tmout.to_i/60 -%> minute idle timeout
 export TMOUT=<%= @shell_tmout %>
 <% end -%>
 

@@ -1,5 +1,6 @@
-# Parameters
-class common::params {
+# Default Parameters
+class harvard::params {
+  $shell_tmout = '10800'
   $proxyserver = undef
   $proxy_port  = undef
 
@@ -11,7 +12,8 @@ class common::params {
       $emacs = 'emacs-nox'
     }
     default: {
-      fail("$::operatingsystem is not supported")
+      fail("${::operatingsystem} is not supported")
     }
   }
 }
+

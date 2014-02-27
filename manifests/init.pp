@@ -1,6 +1,6 @@
-# == Class: common
+# == Class: harvard
 #
-# Full description of class common here.
+# Full description of class harvard here.
 #
 # === Parameters
 #
@@ -23,7 +23,7 @@
 #
 # === Examples
 #
-#  class { common:
+#  class { harvard:
 #    servers => [ 'pool.ntp.org', 'ntp.local.company.com' ]
 #  }
 #
@@ -34,11 +34,12 @@
 # === Copyright
 #
 # Copyright 2013
-class common (
-  $shell_tmout = '10800',
-  $proxyserver = $::common::params::proxyserver,
-  $proxy_port  = $::common::params::proxy_port
-  ) inherits common::params {
-  class { 'common::packages': }
-  class { 'common::files': }
+class harvard (
+  $shell_tmout = $::harvard::params::shell_tmout,
+  $proxyserver = $::harvard::params::proxyserver,
+  $proxy_port  = $::harvard::params::proxy_port
+  ) inherits harvard::params {
+  class { 'harvard::packages': }
+  class { 'harvard::files': }
+  class { 'harvard::skin': }
 }

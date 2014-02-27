@@ -1,23 +1,6 @@
 # Common Files
-class common::files {
-  file { '/etc/issue':
-    ensure  => 'present',
-    mode    => '0644',
-    owner   => 'root',
-    group   => 'root',
-    backup  => true,
-    content => template('common/etc/issue.erb'),
-  }
-
-  file { '/etc/motd':
-    ensure  => 'present',
-    mode    => '0644',
-    owner   => 'root',
-    group   => 'root',
-    backup  => true,
-    content => template('common/etc/motd.erb'),
-  }
-
+class harvard::files () inherits harvard::params{
+  # By Default don't backup log directories
   file { '/var/.nsr':
     content => "+skip:log\n",
     mode    => '0400',
@@ -28,6 +11,6 @@ class common::files {
     owner   => 'root',
     group   => 'root',
     backup  => true,
-    content => template('common/etc/profile.d/harvard.sh.erb'),
+    content => template('harvard/etc/profile.d/harvard.sh.erb'),
   }
 }
