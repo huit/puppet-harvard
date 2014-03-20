@@ -2,20 +2,38 @@
 require 'facter'
 
 begin
-  Facter.operatingsystem
+  Facter.osfamily
 rescue
   Facter.loadfacts()
 end
-os = Facter.value("operatingsystem")
-if os.match(/CentOS|RedHat/) then
-  unless  `rpm -q --last basesystem`.empty?
-    Facter.add("born_on") do
-      setcode do
-        date = `rpm -q --qf '%{INSTALLTIME}' basesystem`
-        born_on = `date --date=@#{date} +%F`.chomp
-        born_on
-      end
+os = Facter.value("osfamily")
+
+Facter.add(:born_on) do
+  confine :kernel => "Linux"
+  confine :osfamily => "RedHat"
+  setcode do
+    begin
+      date = `rpm -q --qf '%{INSTALLTIME}' basesystem`
+      `date --date=@#{date} +%F`.chomp
+    rescue
+      "UNKNOWN"
     end
   end
 end
 
+Facter.add(:born_on) do
+  confine :kernel => "Linux"
+  setcode do
+    begin
+      Facter::Util::Resolution.exec('date --date="$(tune2fs -l /dev/sda1 | grep created | cut -d\ -f3-)" +%F')
+    rescue
+      "UNKNOWN"
+    end
+  end
+end
+
+Facter.add(:born_on) do
+  setcode do
+    "UNKNOWN"
+  end
+end
