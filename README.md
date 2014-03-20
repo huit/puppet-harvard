@@ -1,6 +1,6 @@
-puppet-common
+puppet-harvard
 =============
-[![Build Status](https://travis-ci.org/huit/puppet-common.png?branch=master)](https://travis-ci.org/huit/puppet-common)
+[![Build Status](https://travis-ci.org/huit/puppet-harvard.png?branch=master)](https://travis-ci.org/huit/puppet-harvard)
 
 Puppet Module for Common Elements of HUIT Systems
 
