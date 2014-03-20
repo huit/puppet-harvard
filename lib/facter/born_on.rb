@@ -25,7 +25,10 @@ Facter.add(:born_on) do
   confine :kernel => "Linux"
   setcode do
     begin
-      Facter::Util::Resolution.exec('date --date="$(tune2fs -l /dev/sda1 | grep created | cut -d\ -f3-)" +%F')
+      blockdevices = Facter.value("blockdevices").split(",")
+      filesystems = Facter.value("filesystems").split(",")
+      fsdevice = blockdevices[filesystems.index { |fs| fs =~ /(ext)/ }]
+      Facter::Util::Resolution.exec("date --date='$(tune2fs -l /dev/#{fsdevice}1 | grep created | cut -d\ -f3-)' +%F")
     rescue
       "UNKNOWN"
     end
